@@ -169,8 +169,8 @@ AddEventHandler('qb-hud:client:UpdateDrivingMeters', function(toggle, amount)
     })
 end)
 
-RegisterNetEvent('qb-hud:client:UpdateVoiceProximity')
-AddEventHandler('qb-hud:client:UpdateVoiceProximity', function(Proximity)
+RegisterNetEvent('pma-voice:setTalkingMode')
+AddEventHandler('pma-voice:setTalkingMode', function(newTalkingRange)
     SendNUIMessage({
         action = "proximity",
         prox = Proximity
@@ -181,7 +181,8 @@ RegisterNetEvent('qb-hud:client:ProximityActive')
 AddEventHandler('qb-hud:client:ProximityActive', function(active)
     SendNUIMessage({
         action = "talking",
-        IsTalking = active
+        isTalking = NetworkIsPlayerTalking(PlayerId())
+
     })
 end)
 
